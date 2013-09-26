@@ -188,36 +188,30 @@ class Kohana_Cache_Memcached extends Cache
 
     /**
      * Decrements the value of a cached value entry by offset
-     * 
-     * If the value doesn't currently exists it will be set to `initial_value`,
+     *
      * returns item's new value on success or FALSE on failure.
      *
      * @param string $id Id of cache entry
      * @param int $offset The amount by which to decrement the item's value
-     * @param int $initial_value The value to set the item to if it doesn't currently exist
-     * @param int $lifetime lifetime in seconds
      * @return int|boolean the item's new value on success or FALSE on failure
      */
-    public function decrement($id, $offset = 1, $initial_value = 0, $lifetime = 3600)
+    public function decrement($id, $offset = 1)
     {
         return $this->memcached_instance->decrement($id, $offset);
     }
 
     /**
      * Decrements the value of a cached value entry by offset
-     * 
-     * If the value doesn't currently exists it will be set to `initial_value`,
+     *
      * returns item's new value on success or FALSE on failure.
      *
      * @param string $id Id of cache entry
      * @param int $offset The amount by which to decrement the item's value
-     * @param int $initial_value The value to set the item to if it doesn't currently exist
-     * @param int $lifetime lifetime in seconds
      * @return int|boolean the item's new value on success or FALSE on failure
      *
      */
-    public function increment($id, $offset = 1, $initial_value = 0, $lifetime = 3600)
+    public function increment($id, $offset = 1)
     {
-        return $this->memcached_instance->increment($id, $offset, $initial_value = 0, $lifetime = 3600);
+        return $this->memcached_instance->increment($id, $offset);
     }
 }
