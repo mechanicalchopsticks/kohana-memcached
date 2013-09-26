@@ -158,7 +158,7 @@ class Kohana_Cache_Memcached extends Cache
      *     // Delete 'foo' entry from the memcache group
      *     Cache::instance('memcache')->delete('foo')
      *
-     * @param   string   id to remove from cache`
+     * @param   string   id to remove from cache
      * @return  boolean
      */
     public function delete($id)
