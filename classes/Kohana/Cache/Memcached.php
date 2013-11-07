@@ -111,7 +111,7 @@ class Kohana_Cache_Memcached extends Cache
      */
     public function get($id, $default = NULL)
     {
-        $result = $this->memcached_instance->get($id);
+        $result = $this->memcached_instance->get($this->_sanitize_id($id));
 
         if ($this->memcached_instance->getResultCode() !== Memcached::RES_SUCCESS)
         {
@@ -146,7 +146,7 @@ class Kohana_Cache_Memcached extends Cache
      */
     public function set($id, $data, $lifetime = 3600)
     {
-        return $this->memcached_instance->set($id, $data, $lifetime);
+        return $this->memcached_instance->set($this->_sanitize_id($id), $data, $lifetime);
     }
 
     /**
@@ -163,7 +163,7 @@ class Kohana_Cache_Memcached extends Cache
      */
     public function delete($id)
     {
-        return $this->memcached_instance->delete($id);
+        return $this->memcached_instance->delete($this->_sanitize_id($id));
     }
 
     /**
@@ -197,7 +197,7 @@ class Kohana_Cache_Memcached extends Cache
      */
     public function decrement($id, $offset = 1)
     {
-        return $this->memcached_instance->decrement($id, $offset);
+        return $this->memcached_instance->decrement($this->_sanitize_id($id), $offset);
     }
 
     /**
@@ -212,6 +212,6 @@ class Kohana_Cache_Memcached extends Cache
      */
     public function increment($id, $offset = 1)
     {
-        return $this->memcached_instance->increment($id, $offset);
+        return $this->memcached_instance->increment($this->_sanitize_id($id), $offset);
     }
 }
